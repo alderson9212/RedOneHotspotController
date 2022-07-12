@@ -26,7 +26,7 @@ public class mainTest {
     
     
     public static void main(String[] args) {
-        ImageIcon icon = new ImageIcon("C:\\Users\\Elliot\\Documents\\NetBeansProjects\\ApiMikrotik\\src\\Imagenes\\wifi.png");
+       /*ImageIcon icon = new ImageIcon("C:\\Users\\Elliot\\Documents\\NetBeansProjects\\ApiMikrotik\\src\\Imagenes\\wifi.png");
         List<HotspotUser> lista = new ArrayList<>();
         HotspotUser hot = new HotspotUser();
         hot.setUsername("hola");
@@ -56,7 +56,8 @@ public class mainTest {
             documento.close();
         } catch (Exception e) {
             System.out.println("Error al crear archivo:" + e.getMessage());
-        }
-
+        }*/
+       
+       new Visual("/home/wilmer/respaldo/var-respaldo/RedOne/HotspotContrller/RedOneHotspotController/src/files/ficha.pdf").setVisible(true);
     }
 }

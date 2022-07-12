@@ -1,6 +1,6 @@
 
 import com.redone.modelos.HotspotUser;
-import examples.ImpresionFichas;
+import com.redone.reportes.Visual;
 
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
@@ -12,7 +12,6 @@ import java.io.FileWriter;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
@@ -671,11 +670,11 @@ public class Index_ extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         List<HotspotUser> lista = metodos.crearHotspotUsuariosFicha(Integer.parseInt(spTotalFichas.getValue().toString()), cbPerfiles.getSelectedItem().toString());
-        ImpresionFichas impr = new ImpresionFichas(lista, (ImageIcon) lblImage.getIcon());
-        JDialog jdialog = new JDialog(impr, "GESTION DE FICHAS CREADAS", true);
+        Visual visual = new Visual(getClass().getResource("/files/ficha.pdf").toString());
+        JDialog jdialog = new JDialog(visual, "GESTION DE FICHAS CREADAS", true);
         jdialog.setSize(600, 520);
         jdialog.setModal(true);
-        jdialog.setContentPane(impr.getContentPane());
+        jdialog.setContentPane(visual.getContentPane());
         jdialog.setLocationRelativeTo(null);
         jdialog.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -754,6 +753,7 @@ public class Index_ extends javax.swing.JFrame {
         try {
             //leemos el html que contiene la estructura del pdf
             String ruta = getClass().getResource("/files/").toString().replace("/", "\\").replace("file:", "");
+            System.out.println("rutaaaaaaaaaaa:"+ruta);
             File fileHtml = new File(ruta + "fichas.html");
             FileReader frHtml = new FileReader(fileHtml);
             BufferedReader brHtml = new BufferedReader(frHtml);
@@ -789,7 +789,6 @@ public class Index_ extends javax.swing.JFrame {
             bw.write(contenidoPrincipal.replace("@table@", contenido_replace));
             bw.close();
 
-            String ficheroHTML = "C:\\Users\\Elliot\\Documents\\NetBeansProjects\\ApiMikrotik\\build\\classes\\files\\fichas1.html";
             //String url = new File(ficheroHTML).toURI().toURL().toString();
             String ficheroPDF = ruta+"plantilla.pdf";
             OutputStream os = new FileOutputStream(ficheroPDF);
@@ -800,9 +799,18 @@ public class Index_ extends javax.swing.JFrame {
             os.close();
 
         } catch (Exception e) {
-            System.out.println("Error al leer archio:" + e.getMessage());
+            System.out.println("Error al leer archivo:" + e.getMessage());
         }
         return file;
+    }
+    
+    
+     private String getHomeUser() {
+        return System.getProperty("user.home");
+    }
+
+    private String getSeparator() {
+        return System.getProperty("file.separator");
     }
 
     /**
