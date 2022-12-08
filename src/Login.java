@@ -1,4 +1,5 @@
 
+import util.crearArchivo;
 import examples.ConexionMikrotik;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -327,8 +328,8 @@ public class Login extends javax.swing.JFrame {
        try {
             ApiConnection con = ApiConnection.connect(SocketFactory.getDefault(), txtHost.getText(), ApiConnection.DEFAULT_PORT, 2000); 
             con.login(txtUser.getText(),txtPass.getText());
-            new Index_().setVisible(true);
             crearAcrchivo.crearArchivoConexion(txtHost.getText(),txtUser.getText(),txtPass.getText());
+            new Index_().setVisible(true);
             this.dispose();
                        
           } catch (Exception e) {

@@ -5,7 +5,7 @@
  */
 package examples;
 
-import com.redone.modelos.HotspotUser;
+import modelos.HotspotUser;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.IOException;

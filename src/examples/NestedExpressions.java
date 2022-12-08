@@ -1,5 +1,6 @@
 package examples;
 
+import java.util.ArrayList;
 import me.legrange.mikrotik.MikrotikApiException;
 
 import java.util.List;
@@ -15,11 +16,15 @@ public class NestedExpressions extends Example {
     public static void main(String... args) throws Exception {
         NestedExpressions ex = new NestedExpressions();
         ex.connect();
-        ex.test("/ip/firewall/nat/print where (src-address=\"192.168.15.52\" or src-address=\"192.168.15.53\")");
+        /*ex.test("/ip/firewall/nat/print where (src-address=\"192.168.15.52\" or src-address=\"192.168.15.53\")");
         ex.test("/ip/firewall/nat/print where chain=api_test and (src-address=192.168.15.52) and action=log ");
         ex.test("/ip/firewall/nat/print where chain=api_test and (src-address=192.168.15.53 or src-address=192.168.15.52) and action=log ");
         ex.test("/ip/firewall/nat/print where chain=api_test and (src-address=\"192.168.15.53\" or src-address=\"192.168.15.52\") and action=log ");
+        */
+        //ex.test("/ip/hotspot/active/print where address='"+"192.168.88.5");
+        ex.test("/ip/hotspot/user/profile/remove name='hora'");
         ex.disconnect();
+     
     }
 
     private void test(String cmd) throws MikrotikApiException {
